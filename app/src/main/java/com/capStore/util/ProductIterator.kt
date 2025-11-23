@@ -1,13 +1,28 @@
 package com.capStore.util
 
+import com.capStore.model.Product
 
-class ProductIterator(private val products: List<String>) : Iterator<String> {
-    private var index = 0
 
-    override fun hasNext(): Boolean = index < products.size
+interface MyIterator<T> {
+    fun hasNext(): Boolean
+    fun next(): T
+}
 
-    override fun next(): String {
-        if (!hasNext()) throw NoSuchElementException()
-        return products[index++]
+interface MyIterableCollection<T> {
+    fun createIterator(): MyIterator<T>
+}
+
+class ProductCollection(private val products: List<Product>) : MyIterableCollection<Product> {
+
+    override fun createIterator(): MyIterator<Product> {
+        return ProductIterator(products)
+    }
+
+    class ProductIterator(private val products: List<Product>) : MyIterator<Product> {
+        private var index = 0
+
+        override fun hasNext(): Boolean = index < products.size
+
+        override fun next(): Product = products[index++]
     }
 }

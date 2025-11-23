@@ -37,8 +37,6 @@ fun RegisterScreen(onRegister: () -> Unit,
             fontWeight = FontWeight.Bold
         )
         Spacer(Modifier.height(30.dp))
-        //Text("Inscription", style = MaterialTheme.typography.headlineMedium)
-        //Spacer(Modifier.height(16.dp))
 
         OutlinedTextField(value = name,
             onValueChange = { name = it },

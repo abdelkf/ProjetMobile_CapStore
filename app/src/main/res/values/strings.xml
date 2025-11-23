@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">CapStore</string>
+    <string name="desc">Discover the latest Cap Collection</string>
+    <string name="btn_name">Get Started</string>
+    <string name="home_s">Home</string>
+    <string name="products_s">Products</string>
+    <string name="cart">Cart</string>
+    <string name="acc_s">Account</string>
+    <string name="cap_det">Cap Details</string>
+    <string name="order_c">Order Confirmation</string>
 </resources>

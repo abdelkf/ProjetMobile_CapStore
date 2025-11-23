@@ -15,10 +15,10 @@ fun ErrorScreen(onRetry: () -> Unit) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text("Erreur ❌", style = MaterialTheme.typography.headlineLarge)
+        Text("Error, Something went wrong", style = MaterialTheme.typography.headlineLarge)
         Spacer(Modifier.height(20.dp))
         Button(onClick = onRetry) {
-            Text("Réessayer")
+            Text("Retry")
         }
     }
 }

@@ -27,6 +27,7 @@ fun LoginScreen(onLogin: () -> Unit, onRegisterNavigate: () -> Unit) {
         Spacer(Modifier.height(30.dp))
         Text(
             "Welcome back", style = MaterialTheme.typography.headlineMedium,
+            modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center,
             fontWeight = FontWeight.Bold
         )

@@ -17,36 +17,44 @@ fun AppNavHost(navController: NavHostController) {
 
         composable("login") {
             LoginScreen(
-                onLogin = { navController.navigate("products") },
+                onLogin = { navController.navigate("home") },
                 onRegisterNavigate = { navController.navigate("register") }
             )
         }
 
         composable("register") {
-            RegisterScreen(onRegister = { navController.navigate("products") },
+            RegisterScreen(onRegister = { navController.navigate("login") },
                 onBackClick = { navController.popBackStack() }
             )
         }
 
         composable("products") {
-            ProductListScreen(onProductClick = { id -> navController.navigate("productDetail/$id") })
+            ProductListScreen(navController=navController,
+                onProductClick = {id -> navController.navigate("productDetail/$id")
+            })
         }
 
         composable("productDetail/{productId}") { backStack ->
             val id = backStack.arguments?.getString("productId") ?: "0"
-            ProductDetailScreen(productId = id, onAddToCart = { navController.navigate("cart") })
+            DetailBottomNavigationBar(navController=navController,productId = id, onAddToCart = { navController.navigate("cart") })
         }
 
         composable("cart") {
-            CartScreen(onPurchase = { navController.navigate("confirm") })
+            CartBottomNavigationBar(navController=navController,
+                onPurchase = { navController.navigate("confirm") })
         }
 
         composable("confirm") {
-            PurchaseConfirmationScreen(onHome = { navController.navigate("welcome") })
+            //PurchaseConfirmationScreen(onHome = { navController.navigate("welcome") })
+            PurchaseConfirmationScreenApp(navController)
         }
 
         composable("error") {
             ErrorScreen(onRetry = { navController.navigate("welcome") })
         }
+        composable("home") { HomeBottomNavigationBar(navController) }
+
+        composable("account") { AccountBottomNavigationBar(navController) }
+
     }
 }
